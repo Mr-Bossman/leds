@@ -1,0 +1,370 @@
+
+leds.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00803f00  000001b6  0000024a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001b6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00803f02  00803f02  0000024c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000024c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000027c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000040  00000000  00000000  000002b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001ee8  00000000  00000000  000002f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00001586  00000000  00000000  000021e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000457  00000000  00000000  00003766  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000074  00000000  00000000  00003bc0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000cf4  00000000  00000000  00003c34  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000e1  00000000  00000000  00004928  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  00004a09  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
+   2:	33 c0       	rjmp	.+102    	; 0x6a <__bad_interrupt>
+   4:	32 c0       	rjmp	.+100    	; 0x6a <__bad_interrupt>
+   6:	c2 c0       	rjmp	.+388    	; 0x18c <__vector_3>
+   8:	30 c0       	rjmp	.+96     	; 0x6a <__bad_interrupt>
+   a:	2f c0       	rjmp	.+94     	; 0x6a <__bad_interrupt>
+   c:	2e c0       	rjmp	.+92     	; 0x6a <__bad_interrupt>
+   e:	2d c0       	rjmp	.+90     	; 0x6a <__bad_interrupt>
+  10:	2c c0       	rjmp	.+88     	; 0x6a <__bad_interrupt>
+  12:	2b c0       	rjmp	.+86     	; 0x6a <__bad_interrupt>
+  14:	2a c0       	rjmp	.+84     	; 0x6a <__bad_interrupt>
+  16:	29 c0       	rjmp	.+82     	; 0x6a <__bad_interrupt>
+  18:	28 c0       	rjmp	.+80     	; 0x6a <__bad_interrupt>
+  1a:	27 c0       	rjmp	.+78     	; 0x6a <__bad_interrupt>
+  1c:	26 c0       	rjmp	.+76     	; 0x6a <__bad_interrupt>
+  1e:	25 c0       	rjmp	.+74     	; 0x6a <__bad_interrupt>
+  20:	24 c0       	rjmp	.+72     	; 0x6a <__bad_interrupt>
+  22:	23 c0       	rjmp	.+70     	; 0x6a <__bad_interrupt>
+  24:	22 c0       	rjmp	.+68     	; 0x6a <__bad_interrupt>
+  26:	21 c0       	rjmp	.+66     	; 0x6a <__bad_interrupt>
+  28:	20 c0       	rjmp	.+64     	; 0x6a <__bad_interrupt>
+  2a:	1f c0       	rjmp	.+62     	; 0x6a <__bad_interrupt>
+  2c:	1e c0       	rjmp	.+60     	; 0x6a <__bad_interrupt>
+  2e:	1d c0       	rjmp	.+58     	; 0x6a <__bad_interrupt>
+  30:	1c c0       	rjmp	.+56     	; 0x6a <__bad_interrupt>
+  32:	1b c0       	rjmp	.+54     	; 0x6a <__bad_interrupt>
+
+00000034 <__ctors_end>:
+  34:	11 24       	eor	r1, r1
+  36:	1f be       	out	0x3f, r1	; 63
+  38:	cf ef       	ldi	r28, 0xFF	; 255
+  3a:	cd bf       	out	0x3d, r28	; 61
+  3c:	df e3       	ldi	r29, 0x3F	; 63
+  3e:	de bf       	out	0x3e, r29	; 62
+
+00000040 <__do_copy_data>:
+  40:	1f e3       	ldi	r17, 0x3F	; 63
+  42:	a0 e0       	ldi	r26, 0x00	; 0
+  44:	bf e3       	ldi	r27, 0x3F	; 63
+  46:	e6 eb       	ldi	r30, 0xB6	; 182
+  48:	f1 e0       	ldi	r31, 0x01	; 1
+  4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
+  4c:	05 90       	lpm	r0, Z+
+  4e:	0d 92       	st	X+, r0
+  50:	a2 30       	cpi	r26, 0x02	; 2
+  52:	b1 07       	cpc	r27, r17
+  54:	d9 f7       	brne	.-10     	; 0x4c <__do_copy_data+0xc>
+
+00000056 <__do_clear_bss>:
+  56:	2f e3       	ldi	r18, 0x3F	; 63
+  58:	a2 e0       	ldi	r26, 0x02	; 2
+  5a:	bf e3       	ldi	r27, 0x3F	; 63
+  5c:	01 c0       	rjmp	.+2      	; 0x60 <.do_clear_bss_start>
+
+0000005e <.do_clear_bss_loop>:
+  5e:	1d 92       	st	X+, r1
+
+00000060 <.do_clear_bss_start>:
+  60:	a8 30       	cpi	r26, 0x08	; 8
+  62:	b2 07       	cpc	r27, r18
+  64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
+  66:	48 d0       	rcall	.+144    	; 0xf8 <main>
+  68:	a4 c0       	rjmp	.+328    	; 0x1b2 <_exit>
+
+0000006a <__bad_interrupt>:
+  6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
+
+0000006c <init_timer>:
+#include <avr/interrupt.h>
+
+volatile uint16_t _tx_delay = 0;
+
+void init_timer(){
+	TCA0.SINGLE.CTRLA = TCA_SINGLE_ENABLE_bm;
+  6c:	e0 e0       	ldi	r30, 0x00	; 0
+  6e:	fa e0       	ldi	r31, 0x0A	; 10
+  70:	81 e0       	ldi	r24, 0x01	; 1
+  72:	80 83       	st	Z, r24
+	TCA0.SINGLE.CTRLB = TCA_SINGLE_CMP2EN_bm | TCA_SINGLE_CMP1EN_bm | TCA_SINGLE_CMP0EN_bm | TCA_SINGLE_WGMODE1_bm | TCA_SINGLE_WGMODE0_bm;
+  74:	83 e7       	ldi	r24, 0x73	; 115
+  76:	81 83       	std	Z+1, r24	; 0x01
+	TCA0.SINGLE.CTRLC = TCA_SINGLE_CMP1OV_bm | TCA_SINGLE_CMP1OV_bm | TCA_SINGLE_CMP0OV_bm;
+  78:	83 e0       	ldi	r24, 0x03	; 3
+  7a:	82 83       	std	Z+2, r24	; 0x02
+	TCA0.SINGLE.CMP0 = 128;
+  7c:	80 e8       	ldi	r24, 0x80	; 128
+  7e:	90 e0       	ldi	r25, 0x00	; 0
+  80:	80 a7       	std	Z+40, r24	; 0x28
+  82:	91 a7       	std	Z+41, r25	; 0x29
+	TCA0.SINGLE.CMP1 = 128;
+  84:	82 a7       	std	Z+42, r24	; 0x2a
+  86:	93 a7       	std	Z+43, r25	; 0x2b
+	TCA0.SINGLE.CMP2 = 128;
+  88:	84 a7       	std	Z+44, r24	; 0x2c
+  8a:	95 a7       	std	Z+45, r25	; 0x2d
+	TCA0.SINGLE.PER = 0xFF; // set top to 255
+  8c:	8f ef       	ldi	r24, 0xFF	; 255
+  8e:	90 e0       	ldi	r25, 0x00	; 0
+  90:	86 a3       	std	Z+38, r24	; 0x26
+  92:	97 a3       	std	Z+39, r25	; 0x27
+  94:	08 95       	ret
+
+00000096 <initSerial>:
+}
+
+
+void initSerial(){
+	_tx_delay = 0;
+  96:	10 92 06 3f 	sts	0x3F06, r1	; 0x803f06 <_tx_delay>
+  9a:	10 92 07 3f 	sts	0x3F07, r1	; 0x803f07 <_tx_delay+0x1>
+	uint16_t bit_delay = (F_CPU / 1200) / 4;
+	if (bit_delay > 15 / 4)
+		_tx_delay = bit_delay - (15 / 4);
+  9e:	82 eb       	ldi	r24, 0xB2	; 178
+  a0:	92 e0       	ldi	r25, 0x02	; 2
+  a2:	80 93 06 3f 	sts	0x3F06, r24	; 0x803f06 <_tx_delay>
+  a6:	90 93 07 3f 	sts	0x3F07, r25	; 0x803f07 <_tx_delay+0x1>
+  aa:	08 95       	ret
+
+000000ac <readSerial>:
+	else
+		_tx_delay = 1;
+}
+uint8_t readSerial(){
+	cli();
+  ac:	f8 94       	cli
+	uint8_t ret = 0;
+	_delay_loop_2(_tx_delay>>1);  
+  ae:	80 91 06 3f 	lds	r24, 0x3F06	; 0x803f06 <_tx_delay>
+  b2:	90 91 07 3f 	lds	r25, 0x3F07	; 0x803f07 <_tx_delay+0x1>
+  b6:	96 95       	lsr	r25
+  b8:	87 95       	ror	r24
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  ba:	01 97       	sbiw	r24, 0x01	; 1
+  bc:	f1 f7       	brne	.-4      	; 0xba <readSerial+0xe>
+	_delay_loop_2(_tx_delay);
+  be:	80 91 06 3f 	lds	r24, 0x3F06	; 0x803f06 <_tx_delay>
+  c2:	90 91 07 3f 	lds	r25, 0x3F07	; 0x803f07 <_tx_delay+0x1>
+  c6:	01 97       	sbiw	r24, 0x01	; 1
+  c8:	f1 f7       	brne	.-4      	; 0xc6 <readSerial+0x1a>
+	for (uint8_t w = 0; w < 8;w++) {
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+	else
+		_tx_delay = 1;
+}
+uint8_t readSerial(){
+	cli();
+	uint8_t ret = 0;
+  cc:	80 e0       	ldi	r24, 0x00	; 0
+	_delay_loop_2(_tx_delay>>1);  
+	_delay_loop_2(_tx_delay);
+	for (uint8_t w = 0; w < 8;w++) {
+  ce:	10 c0       	rjmp	.+32     	; 0xf0 <readSerial+0x44>
+		ret >>= 1;
+  d0:	86 95       	lsr	r24
+		ret |= (PORTA.IN & (1<<5))?128:0;
+  d2:	20 91 08 04 	lds	r18, 0x0408	; 0x800408 <__RODATA_PM_OFFSET__+0x7f8408>
+  d6:	25 ff       	sbrs	r18, 5
+  d8:	02 c0       	rjmp	.+4      	; 0xde <readSerial+0x32>
+  da:	20 e8       	ldi	r18, 0x80	; 128
+  dc:	01 c0       	rjmp	.+2      	; 0xe0 <readSerial+0x34>
+  de:	20 e0       	ldi	r18, 0x00	; 0
+  e0:	82 2b       	or	r24, r18
+		_delay_loop_2(_tx_delay);
+  e2:	e0 91 06 3f 	lds	r30, 0x3F06	; 0x803f06 <_tx_delay>
+  e6:	f0 91 07 3f 	lds	r31, 0x3F07	; 0x803f07 <_tx_delay+0x1>
+  ea:	31 97       	sbiw	r30, 0x01	; 1
+  ec:	f1 f7       	brne	.-4      	; 0xea <readSerial+0x3e>
+uint8_t readSerial(){
+	cli();
+	uint8_t ret = 0;
+	_delay_loop_2(_tx_delay>>1);  
+	_delay_loop_2(_tx_delay);
+	for (uint8_t w = 0; w < 8;w++) {
+  ee:	9f 5f       	subi	r25, 0xFF	; 255
+  f0:	98 30       	cpi	r25, 0x08	; 8
+  f2:	70 f3       	brcs	.-36     	; 0xd0 <readSerial+0x24>
+		ret >>= 1;
+		ret |= (PORTA.IN & (1<<5))?128:0;
+		_delay_loop_2(_tx_delay);
+	}
+	sei();
+  f4:	78 94       	sei
+	return ret;
+}
+  f6:	08 95       	ret
+
+000000f8 <main>:
+
+uint8_t recv[4] = {0};
+volatile bool dos = true;
+int main(void)
+{
+	PORTB.DIR = 0b111;
+  f8:	87 e0       	ldi	r24, 0x07	; 7
+  fa:	80 93 20 04 	sts	0x0420, r24	; 0x800420 <__RODATA_PM_OFFSET__+0x7f8420>
+	init_timer();
+  fe:	b6 df       	rcall	.-148    	; 0x6c <init_timer>
+	initSerial();
+ 100:	ca df       	rcall	.-108    	; 0x96 <initSerial>
+	PORTA.INTFLAGS = (1<<5);
+ 102:	e0 e0       	ldi	r30, 0x00	; 0
+ 104:	f4 e0       	ldi	r31, 0x04	; 4
+ 106:	80 e2       	ldi	r24, 0x20	; 32
+ 108:	81 87       	std	Z+9, r24	; 0x09
+	PORTA.PIN5CTRL = 11;
+ 10a:	8b e0       	ldi	r24, 0x0B	; 11
+ 10c:	85 8b       	std	Z+21, r24	; 0x15
+
+	sei();
+ 10e:	78 94       	sei
+    while (1) 
+    {
+		for(uint8_t b = 0; b < 4; b++){
+ 110:	c0 e0       	ldi	r28, 0x00	; 0
+ 112:	1b c0       	rjmp	.+54     	; 0x14a <__DATA_REGION_LENGTH__+0x4a>
+			while(dos);
+ 114:	80 91 00 3f 	lds	r24, 0x3F00	; 0x803f00 <__DATA_REGION_ORIGIN__>
+ 118:	81 11       	cpse	r24, r1
+ 11a:	fc cf       	rjmp	.-8      	; 0x114 <__DATA_REGION_LENGTH__+0x14>
+			cli();
+ 11c:	f8 94       	cli
+			AC0.INTCTRL = 0;
+ 11e:	0f 2e       	mov	r0, r31
+ 120:	f0 e7       	ldi	r31, 0x70	; 112
+ 122:	ef 2e       	mov	r14, r31
+ 124:	f6 e0       	ldi	r31, 0x06	; 6
+ 126:	ff 2e       	mov	r15, r31
+ 128:	f0 2d       	mov	r31, r0
+ 12a:	f7 01       	movw	r30, r14
+ 12c:	16 82       	std	Z+6, r1	; 0x06
+			recv[b] = readSerial();
+ 12e:	0c 2f       	mov	r16, r28
+ 130:	10 e0       	ldi	r17, 0x00	; 0
+ 132:	bc df       	rcall	.-136    	; 0xac <readSerial>
+ 134:	f8 01       	movw	r30, r16
+ 136:	ee 5f       	subi	r30, 0xFE	; 254
+ 138:	f0 4c       	sbci	r31, 0xC0	; 192
+ 13a:	80 83       	st	Z, r24
+			AC0.INTCTRL = 1;
+ 13c:	81 e0       	ldi	r24, 0x01	; 1
+ 13e:	f7 01       	movw	r30, r14
+ 140:	86 83       	std	Z+6, r24	; 0x06
+			sei();
+ 142:	78 94       	sei
+			dos = false;
+ 144:	10 92 00 3f 	sts	0x3F00, r1	; 0x803f00 <__DATA_REGION_ORIGIN__>
+	PORTA.PIN5CTRL = 11;
+
+	sei();
+    while (1) 
+    {
+		for(uint8_t b = 0; b < 4; b++){
+ 148:	cf 5f       	subi	r28, 0xFF	; 255
+ 14a:	c4 30       	cpi	r28, 0x04	; 4
+ 14c:	18 f3       	brcs	.-58     	; 0x114 <__DATA_REGION_LENGTH__+0x14>
+			recv[b] = readSerial();
+			AC0.INTCTRL = 1;
+			sei();
+			dos = false;
+		}
+		if(recv[0] == 0xff){
+ 14e:	80 91 02 3f 	lds	r24, 0x3F02	; 0x803f02 <__data_end>
+ 152:	8f 3f       	cpi	r24, 0xFF	; 255
+ 154:	e9 f6       	brne	.-70     	; 0x110 <__DATA_REGION_LENGTH__+0x10>
+			TCA0.SINGLE.CMP0 = recv[1];
+ 156:	e2 e0       	ldi	r30, 0x02	; 2
+ 158:	ff e3       	ldi	r31, 0x3F	; 63
+ 15a:	81 81       	ldd	r24, Z+1	; 0x01
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	a0 e0       	ldi	r26, 0x00	; 0
+ 160:	ba e0       	ldi	r27, 0x0A	; 10
+ 162:	98 96       	adiw	r26, 0x28	; 40
+ 164:	8d 93       	st	X+, r24
+ 166:	9c 93       	st	X, r25
+ 168:	99 97       	sbiw	r26, 0x29	; 41
+			TCA0.SINGLE.CMP1 = recv[2];
+ 16a:	82 81       	ldd	r24, Z+2	; 0x02
+ 16c:	90 e0       	ldi	r25, 0x00	; 0
+ 16e:	9a 96       	adiw	r26, 0x2a	; 42
+ 170:	8d 93       	st	X+, r24
+ 172:	9c 93       	st	X, r25
+ 174:	9b 97       	sbiw	r26, 0x2b	; 43
+			TCA0.SINGLE.CMP2 = recv[3];
+ 176:	83 81       	ldd	r24, Z+3	; 0x03
+ 178:	90 e0       	ldi	r25, 0x00	; 0
+ 17a:	9c 96       	adiw	r26, 0x2c	; 44
+ 17c:	8d 93       	st	X+, r24
+ 17e:	9c 93       	st	X, r25
+ 180:	9d 97       	sbiw	r26, 0x2d	; 45
+			TCA0.SINGLE.CTRLESET = (1 << 2); //reset timmer
+ 182:	84 e0       	ldi	r24, 0x04	; 4
+ 184:	15 96       	adiw	r26, 0x05	; 5
+ 186:	8c 93       	st	X, r24
+			recv[0] = 0; // clear as not to comre back here resetting the timmer again
+ 188:	10 82       	st	Z, r1
+ 18a:	c2 cf       	rjmp	.-124    	; 0x110 <__DATA_REGION_LENGTH__+0x10>
+
+0000018c <__vector_3>:
+			Send(chr[j]);
+		}
+		Send(10);*/
+    }
+}
+ISR(PORTA_PORT_vect){
+ 18c:	1f 92       	push	r1
+ 18e:	0f 92       	push	r0
+ 190:	0f b6       	in	r0, 0x3f	; 63
+ 192:	0f 92       	push	r0
+ 194:	11 24       	eor	r1, r1
+ 196:	8f 93       	push	r24
+	dos = PORTA.IN & (1<<5); // fuster clucking on both edges even when set to neg
+ 198:	80 91 08 04 	lds	r24, 0x0408	; 0x800408 <__RODATA_PM_OFFSET__+0x7f8408>
+ 19c:	85 fb       	bst	r24, 5
+ 19e:	88 27       	eor	r24, r24
+ 1a0:	80 f9       	bld	r24, 0
+ 1a2:	80 93 00 3f 	sts	0x3F00, r24	; 0x803f00 <__DATA_REGION_ORIGIN__>
+}
+ 1a6:	8f 91       	pop	r24
+ 1a8:	0f 90       	pop	r0
+ 1aa:	0f be       	out	0x3f, r0	; 63
+ 1ac:	0f 90       	pop	r0
+ 1ae:	1f 90       	pop	r1
+ 1b0:	18 95       	reti
+
+000001b2 <_exit>:
+ 1b2:	f8 94       	cli
+
+000001b4 <__stop_program>:
+ 1b4:	ff cf       	rjmp	.-2      	; 0x1b4 <__stop_program>
